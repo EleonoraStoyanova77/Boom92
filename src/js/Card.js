@@ -16,11 +16,12 @@ export default class Card extends EventEmitter {
     };
   }
 
-  constructor({ type, price }) {
+  constructor({ type, price, emoji }) {
     super();
 
     this._type = type;
     this._price = price;
+    this._emoji = emoji;
 
     this.container = document.createElement("div");
     this.container.classList.add("card-container");
@@ -41,6 +42,7 @@ export default class Card extends EventEmitter {
       this.emit(Card.events.ADD_TO_CART, {
         type: this._type,
         price: this._price,
+        emoji: this._emoji,
       });
     });
   }
